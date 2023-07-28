@@ -46,3 +46,22 @@
 👇 Bar Chart 화면
 
 <img width="800" alt="스크린샷 2023-07-27 23 00 14" src="https://github.com/FEChallenge/challenges/assets/84956036/579215ec-8cd7-4756-9a71-51c2fccd2a75">
+
+## 리뷰어 배정
+
+<table>
+<tr>
+  <td>리뷰어</td>
+  <td>Bangtae</td>
+  <td>Dotori</td>
+  <td>Oliver</td>
+  <td>Rumka</td>
+</tr>
+<tr>
+  <td>작성자</td>
+  <td>Oliver</td>
+  <td>Bangtae</td>
+  <td>Rumka</td>
+  <td>Dotori</td>
+</tr>
+</table>
