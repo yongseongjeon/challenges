@@ -1,5 +1,11 @@
+import Header from "../../components/Header/Header";
+
 function InputScore() {
-  return <div>Input score pages.</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default InputScore;
