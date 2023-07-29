@@ -30,4 +30,5 @@ const Box = styled.div<Pick<PlayerNameProps, "size">>`
   justify-content: center;
   align-items: center;
   border: 1px solid ${COLOR.BLACK};
+  border-radius: 10px;
 `;

@@ -18,4 +18,5 @@ const StyledInput = styled.input`
   height: 3rem;
   border: 1px solid ${COLOR.BLACK};
   text-align: center;
+  border-radius: 10px;
 `;

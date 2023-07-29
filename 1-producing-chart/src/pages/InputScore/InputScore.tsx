@@ -42,6 +42,7 @@ const Contents = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   border: 1px solid ${COLOR.BLACK};
+  border-radius: 10px;
 `;
 
 const ContentsHeader = styled.div`
