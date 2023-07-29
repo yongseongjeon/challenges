@@ -1,3 +1,4 @@
+import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import PlayerName from "../../components/PlayerName/PlayerName";
 
@@ -6,6 +7,7 @@ function InputScore() {
     <>
       <Header />
       <PlayerName name="Alex" size="SMALL" />
+      <Button name="Make chart" />
     </>
   );
 }
