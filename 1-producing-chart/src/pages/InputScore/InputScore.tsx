@@ -20,7 +20,7 @@ function InputScore() {
         <ScoreInputForm name="Emma" />
         <Buttons>
           <Button name="Make chart" />
-          <Button name="Reset Data" />
+          <Button name="Reset data" />
         </Buttons>
       </Contents>
     </Wrapper>
