@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLOR } from "../../constants/color";
 
 interface PlayerNameProps {
   name: string;
@@ -28,5 +29,5 @@ const Box = styled.div<Pick<PlayerNameProps, "size">>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid ${COLOR.BLACK};
 `;

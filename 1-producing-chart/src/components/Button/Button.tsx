@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLOR } from "../../constants/color";
 
 interface ButtonProps {
   name: string;
@@ -14,10 +15,10 @@ const StyledButton = styled.button`
   width: fit-content;
   height: 3rem;
   border: 0;
-  color: #fff;
+  color: ${COLOR.WHITE};
   cursor: pointer;
-  background-color: #2980b9;
+  background-color: ${COLOR.BELIZE_HOLE};
   &:hover {
-    background-color: #3498db;
+    background-color: ${COLOR.PETER_RIVER};
   }
 `;

@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { COLOR } from "../../constants/color";
 
 function Header() {
   return (
@@ -13,7 +14,7 @@ export default Header;
 const StyledHeader = styled.header`
   width: 30rem;
   height: 5rem;
-  border: 1px solid black;
+  border: 1px solid ${COLOR.BLACK};
   display: flex;
   justify-content: center;
   align-items: center;
