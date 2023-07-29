@@ -12,7 +12,7 @@ function Button({ name }: ButtonProps) {
 export default Button;
 
 const StyledButton = styled.button`
-  width: fit-content;
+  width: 10rem;
   height: 3rem;
   border: 0;
   color: ${COLOR.WHITE};

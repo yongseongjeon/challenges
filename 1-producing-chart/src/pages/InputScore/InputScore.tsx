@@ -1,15 +1,57 @@
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import ScoreInputForm from "../../components/ScoreInputForm/ScoreInputForm";
+import styled from "styled-components";
+import { COLOR } from "../../constants/color";
 
 function InputScore() {
   return (
-    <>
+    <Wrapper>
       <Header />
-      <Button name="Make chart" />
-      <ScoreInputForm name="Alex" />
-    </>
+      <Contents>
+        <ContentsHeader>
+          <div>Student</div>
+          <div>Score</div>
+        </ContentsHeader>
+        <ScoreInputForm name="Alex" />
+        <ScoreInputForm name="Tom" />
+        <ScoreInputForm name="Ryan" />
+        <ScoreInputForm name="Don" />
+        <ScoreInputForm name="Emma" />
+        <Buttons>
+          <Button name="Make chart" />
+          <Button name="Reset Data" />
+        </Buttons>
+      </Contents>
+    </Wrapper>
   );
 }
 
 export default InputScore;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const Contents = styled.div`
+  display: flex;
+  width: 24rem;
+  padding: 1rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid ${COLOR.BLACK};
+`;
+
+const ContentsHeader = styled.div`
+  display: flex;
+  gap: 9rem;
+  padding-left: 3rem;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+`;

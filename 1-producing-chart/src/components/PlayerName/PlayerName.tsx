@@ -18,7 +18,7 @@ const BOX_SIZE = {
     HEIGHT: "2rem",
   },
   MEDIUM: {
-    WIDTH: "8rem",
+    WIDTH: "10rem",
     HEIGHT: "3rem",
   },
 };

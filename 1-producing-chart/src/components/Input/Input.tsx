@@ -14,7 +14,8 @@ function Input() {
 export default Input;
 
 const StyledInput = styled.input`
-  width: 8rem;
+  width: 10rem;
   height: 3rem;
   border: 1px solid ${COLOR.BLACK};
+  text-align: center;
 `;

@@ -12,7 +12,7 @@ function Header() {
 export default Header;
 
 const StyledHeader = styled.header`
-  width: 30rem;
+  width: 24rem;
   height: 5rem;
   border: 1px solid ${COLOR.BLACK};
   display: flex;
