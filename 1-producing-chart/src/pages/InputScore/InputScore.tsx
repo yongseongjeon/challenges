@@ -1,15 +1,13 @@
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
-import Input from "../../components/Input/Input";
-import PlayerName from "../../components/PlayerName/PlayerName";
+import ScoreInputForm from "../../components/ScoreInputForm/ScoreInputForm";
 
 function InputScore() {
   return (
     <>
       <Header />
-      <PlayerName name="Alex" size="SMALL" />
       <Button name="Make chart" />
-      <Input />
+      <ScoreInputForm name="Alex" />
     </>
   );
 }
