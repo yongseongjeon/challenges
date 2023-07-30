@@ -1,14 +1,20 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useContext } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../constants/color";
+import { ScoreContext } from "../../store/ScoreContext";
+import { setScores } from "../../store/scoreReducer";
 
-function Input() {
-  const [value, setValue] = useState("");
+interface InputProps {
+  name: string;
+}
+
+function Input({ name }: InputProps) {
+  const { scores, dispatch } = useContext(ScoreContext);
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const changedValue = e.target.value;
-    setValue(changedValue);
+    dispatch(setScores({ name, score: changedValue }));
   }
-  return <StyledInput type="number" value={value} onChange={handleChange} placeholder="fill in the score" />;
+  return <StyledInput type="number" value={scores[name]} onChange={handleChange} placeholder="fill in the score" />;
 }
 
 export default Input;

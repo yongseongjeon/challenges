@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PlayerName from "../PlayerName/PlayerName";
 import Input from "../Input/Input";
+import { useState } from "react";
 
 interface ScoreInputForm {
   name: string;
@@ -10,7 +11,7 @@ function ScoreInputForm({ name }: ScoreInputForm) {
   return (
     <Wrapper>
       <PlayerName name={name} size="MEDIUM" />
-      <Input />
+      <Input name={name} />
     </Wrapper>
   );
 }

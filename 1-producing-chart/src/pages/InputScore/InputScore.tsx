@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { COLOR } from "../../constants/color";
 
 function InputScore() {
+  function handleMakeChartButton() {}
   return (
     <Wrapper>
       <Header />
@@ -19,7 +20,7 @@ function InputScore() {
         <ScoreInputForm name="Don" />
         <ScoreInputForm name="Emma" />
         <Buttons>
-          <Button name="Make chart" />
+          <Button name="Make chart" onClick={handleMakeChartButton} />
           <Button name="Reset data" />
         </Buttons>
       </Contents>
