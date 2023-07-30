@@ -46,6 +46,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 26rem;
+  padding: 1rem;
 `;
 
 const Contents = styled.div`
