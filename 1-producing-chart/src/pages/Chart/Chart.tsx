@@ -5,14 +5,20 @@ import PiChart from "../../components/PiChart/PiChart";
 import Header from "../../components/Header/Header";
 import { useState } from "react";
 import BarChart from "../../components/BarChart/BarChart";
+import useRouter from "../../hook/useRouter";
+import { ROUTE_PATH } from "../../route";
 
 function Chart() {
   const [isBarStatus, setIsBarStatus] = useState(false);
+  const { routeTo } = useRouter();
+  function handleClickBackButton() {
+    routeTo(ROUTE_PATH.INPUT_SCORE);
+  }
   return (
     <Wrapper>
       <Header />
       <Buttons>
-        <Button name="back" />
+        <Button name="back" onClick={handleClickBackButton} />
         <ToggleButton isBarStatus={isBarStatus} setIsBarStatus={setIsBarStatus} />
       </Buttons>
       {isBarStatus ? <BarChart /> : <PiChart />}
