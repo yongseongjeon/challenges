@@ -1,25 +1,21 @@
 import styled from "styled-components";
 import Button from "../../components/Button/Button";
 import ToggleButton from "../../components/ToggleButton/ToggleButton";
+import PiChart from "../../components/PiChart/PiChart";
 import Header from "../../components/Header/Header";
-import PiChartSectionInfo from "../../components/PiChartSectionInfo/PiChartSectionInfo";
+import { useState } from "react";
+import BarChart from "../../components/BarChart/BarChart";
 
 function Chart() {
+  const [isBarStatus, setIsBarStatus] = useState(false);
   return (
     <Wrapper>
       <Header />
       <Buttons>
         <Button name="back" />
-        <ToggleButton />
+        <ToggleButton isBarStatus={isBarStatus} setIsBarStatus={setIsBarStatus} />
       </Buttons>
-      <ChartContainer />
-      <Scores>
-        <PiChartSectionInfo color="red" name="Alex" score="1000" />
-        <PiChartSectionInfo color="red" name="Alex" score="1000" />
-        <PiChartSectionInfo color="red" name="Alex" score="1000" />
-        <PiChartSectionInfo color="red" name="Alex" score="1000" />
-        <PiChartSectionInfo color="red" name="Alex" score="1000" />
-      </Scores>
+      {isBarStatus ? <BarChart /> : <PiChart />}
     </Wrapper>
   );
 }
@@ -37,16 +33,4 @@ const Wrapper = styled.div`
 const Buttons = styled.div`
   display: flex;
   gap: 6rem;
-`;
-
-const ChartContainer = styled.div`
-  width: 24rem;
-  height: 24rem;
-  border: 1px solid black;
-  border-radius: 10px;
-`;
-
-const Scores = styled.div`
-  display: flex;
-  gap: 0.5rem;
 `;

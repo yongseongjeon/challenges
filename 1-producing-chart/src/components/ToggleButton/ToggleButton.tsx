@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import { COLOR } from "../../constants/color";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-function ToggleButton() {
-  const [isBarStatus, setIsBarStatus] = useState(false);
+interface ToggleButtonProps {
+  isBarStatus: boolean;
+  setIsBarStatus: Dispatch<SetStateAction<boolean>>;
+}
+
+function ToggleButton({ isBarStatus, setIsBarStatus }: ToggleButtonProps) {
   function handleClickToggleButton() {
     setIsBarStatus(!isBarStatus);
   }
