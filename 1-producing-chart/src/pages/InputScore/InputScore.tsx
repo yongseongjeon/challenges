@@ -5,11 +5,18 @@ import styled from "styled-components";
 import { COLOR } from "../../constants/color";
 import useRouter from "../../hook/useRouter";
 import { ROUTE_PATH } from "../../route";
+import { useContext } from "react";
+import { ScoreContext } from "../../store/ScoreContext";
+import { resetScores } from "../../store/scoreReducer";
 
 function InputScore() {
   const { routeTo } = useRouter();
+  const { dispatch } = useContext(ScoreContext);
   function handleMakeChartButton() {
     routeTo(ROUTE_PATH.CHART);
+  }
+  function handleResetDataButton() {
+    dispatch(resetScores());
   }
   return (
     <Wrapper>
@@ -26,7 +33,7 @@ function InputScore() {
         <ScoreInputForm name="Emma" />
         <Buttons>
           <Button name="Make chart" onClick={handleMakeChartButton} />
-          <Button name="Reset data" />
+          <Button name="Reset data" onClick={handleResetDataButton} />
         </Buttons>
       </Contents>
     </Wrapper>
