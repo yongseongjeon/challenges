@@ -1,5 +1,11 @@
+import ToggleButton from "../../components/ToggleButton/ToggleButton";
+
 function Chart() {
-  return <div>Chart pages.</div>;
+  return (
+    <div>
+      <ToggleButton />
+    </div>
+  );
 }
 
 export default Chart;
