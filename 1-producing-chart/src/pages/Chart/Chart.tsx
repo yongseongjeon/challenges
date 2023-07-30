@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Button from "../../components/Button/Button";
 import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import Header from "../../components/Header/Header";
+import PiChartSectionInfo from "../../components/PiChartSectionInfo/PiChartSectionInfo";
 
 function Chart() {
   return (
@@ -13,11 +14,11 @@ function Chart() {
       </Buttons>
       <ChartContainer />
       <Scores>
-        <Score>Alex</Score>
-        <Score>Alex</Score>
-        <Score>Alex</Score>
-        <Score>Alex</Score>
-        <Score>Alex</Score>
+        <PiChartSectionInfo color="red" name="Alex" score="1000" />
+        <PiChartSectionInfo color="red" name="Alex" score="1000" />
+        <PiChartSectionInfo color="red" name="Alex" score="1000" />
+        <PiChartSectionInfo color="red" name="Alex" score="1000" />
+        <PiChartSectionInfo color="red" name="Alex" score="1000" />
       </Scores>
     </Wrapper>
   );
@@ -48,10 +49,4 @@ const ChartContainer = styled.div`
 const Scores = styled.div`
   display: flex;
   gap: 0.5rem;
-`;
-
-const Score = styled.div`
-  width: 4.5rem;
-  height: 2rem;
-  border: 1px solid black;
 `;
