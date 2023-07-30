@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction, useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../constants/color";
 import { ScoreContext } from "../../store/ScoreContext";

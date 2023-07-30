@@ -1,14 +1,11 @@
-import ChartBar from "./pages/ChartBar/ChartBar";
-import ChartPi from "./pages/ChartPi/ChartPi";
+import Chart from "./pages/Chart/Chart";
 import InputScore from "./pages/InputScore/InputScore";
+import { RoutePath } from "./types/Route";
 
 const ROUTE_PATH = {
   INPUT_SCORE: "/",
-  CHART_PI: "/chart/pi",
-  CHART_BAR: "/chart/bar",
+  CHART: "/chart",
 } as const;
-
-type RoutePath = (typeof ROUTE_PATH)[keyof typeof ROUTE_PATH];
 
 interface RouteConfig {
   id: number;
@@ -18,8 +15,7 @@ interface RouteConfig {
 
 const routeConfigs: RouteConfig[] = [
   { id: 0, path: ROUTE_PATH.INPUT_SCORE, element: <InputScore /> },
-  { id: 1, path: ROUTE_PATH.CHART_PI, element: <ChartPi /> },
-  { id: 2, path: ROUTE_PATH.CHART_BAR, element: <ChartBar /> },
+  { id: 1, path: ROUTE_PATH.CHART, element: <Chart /> },
 ];
 
 export { ROUTE_PATH, routeConfigs };

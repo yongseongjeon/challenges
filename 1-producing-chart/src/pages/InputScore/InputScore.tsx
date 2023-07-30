@@ -3,9 +3,14 @@ import Header from "../../components/Header/Header";
 import ScoreInputForm from "../../components/ScoreInputForm/ScoreInputForm";
 import styled from "styled-components";
 import { COLOR } from "../../constants/color";
+import useRouter from "../../hook/useRouter";
+import { ROUTE_PATH } from "../../route";
 
 function InputScore() {
-  function handleMakeChartButton() {}
+  const { routeTo } = useRouter();
+  function handleMakeChartButton() {
+    routeTo(ROUTE_PATH.CHART);
+  }
   return (
     <Wrapper>
       <Header />
