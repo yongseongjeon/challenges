@@ -1,10 +1,20 @@
 import styled from "styled-components";
 import { Color } from "../../style/color";
+import { Dispatch, SetStateAction } from "react";
 
-function Switch() {
+interface SwitchProps {
+  state: boolean;
+  setState: Dispatch<SetStateAction<boolean>>;
+}
+
+function Switch({ state, setState }: SwitchProps) {
+  function toggleState() {
+    setState(!state);
+  }
+
   return (
     <Container>
-      <Checkbox id="switch" type="checkbox"></Checkbox>
+      <Checkbox id="switch" type="checkbox" checked={state} onChange={toggleState}></Checkbox>
       <Rect />
       <Background htmlFor="switch" />
     </Container>
