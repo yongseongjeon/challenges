@@ -47,7 +47,7 @@ export default Digit;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 22px;
 `;
 const Wrapper = styled.div`
   display: flex;
