@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Switch from "../../components/Switch/Switch";
 import NumberDisplay from "../../components/NumberDisplay/NumberDisplay";
 import { Color } from "../../style/color";
@@ -8,17 +8,42 @@ import Button from "../../components/Button/Button";
 function Home() {
   const [isTimerMode, setIsTimerMode] = useState<boolean>(false);
   const isClockMode = !isTimerMode;
+  const [curTime, setCurTime] = useState("");
+
+  useEffect(() => {
+    const sec = new Date().getSeconds();
+    const timeUntilNextMinute = (60 - sec) * 1_000;
+    const ONE_MINUTE_MS = 60_000;
+    updateCurTime();
+
+    setTimeout(() => {
+      updateCurTime();
+      const interval = setInterval(updateCurTime, ONE_MINUTE_MS);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }, timeUntilNextMinute);
+  }, []);
+
+  function updateCurTime() {
+    const now = new Date();
+    const hour = now.getHours().toString().padStart(2, "0");
+    const minute = now.getMinutes().toString().padStart(2, "0");
+    const time = `${hour}${minute}`;
+    setCurTime(time);
+  }
 
   return (
     <Container>
       {isClockMode && (
         <>
-          <NumberDisplay time="1200" />
+          <NumberDisplay time={curTime} />
         </>
       )}
       {isTimerMode && (
         <>
-          <NumberDisplay time="0015" />
+          <NumberDisplay time="0000" />
         </>
       )}
       <ControlPanel>
