@@ -13,7 +13,7 @@ function ToggleButton({ isBarStatus, setIsBarStatus }: ToggleButtonProps) {
   }
   return (
     <Wrapper>
-      <StyledToggleButton type="checkbox" checked={isBarStatus} onClick={handleClickToggleButton}></StyledToggleButton>
+      <StyledToggleButton type="checkbox" checked={isBarStatus} onChange={handleClickToggleButton}></StyledToggleButton>
       <Rect isBarStatus={isBarStatus}>{isBarStatus ? "Bar" : "Pi"}</Rect>
       <BackgroundBar />
     </Wrapper>

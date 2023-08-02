@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import PlayerName from "../PlayerName/PlayerName";
 import Input from "../Input/Input";
-import { useState } from "react";
 
 interface ScoreInputForm {
   name: string;

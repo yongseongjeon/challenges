@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import Header from "../Header/Header";
-import Button from "../../components/Button/Button";
-import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import PiChartSectionInfo from "../../components/PiChartSectionInfo/PiChartSectionInfo";
 
 function PiChart() {
@@ -20,11 +17,6 @@ function PiChart() {
 }
 
 export default PiChart;
-
-const Buttons = styled.div`
-  display: flex;
-  gap: 6rem;
-`;
 
 const ChartContainer = styled.div`
   width: 24rem;
