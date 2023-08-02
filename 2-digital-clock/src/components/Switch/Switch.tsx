@@ -37,7 +37,7 @@ const Checkbox = styled.input`
 const Rect = styled.span`
   width: 2.7rem;
   height: 2.2rem;
-  border: 1px solid ${Color.BLACK};
+  border: 2px solid ${Color.BLACK};
   background-color: ${Color.SILVER};
   position: absolute;
   top: 0.3rem;
@@ -53,7 +53,7 @@ const Rect = styled.span`
 const Background = styled.label`
   width: 6.3rem;
   height: 2.8rem;
-  border: 1px solid ${Color.BLACK};
+  border: 2px solid ${Color.BLACK};
   position: absolute;
   top: 0;
   left: 0;

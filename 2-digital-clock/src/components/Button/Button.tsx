@@ -14,9 +14,9 @@ export default Button;
 const Container = styled.button`
   width: 5rem;
   height: 4rem;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: ${Color.WHITE};
-  border: 1px solid ${Color.BLACK};
+  border: 2px solid ${Color.BLACK};
   font-size: 1.25rem;
 
   &:active {
