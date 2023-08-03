@@ -8,7 +8,8 @@ import Button from "../../components/Button/Button";
 function Home() {
   const [isTimerMode, setIsTimerMode] = useState<boolean>(false);
   const isClockMode = !isTimerMode;
-  const [curTime, setCurTime] = useState("");
+  const [curTime, setCurTime] = useState<string>("");
+  const [clockMode, setClockMode] = useState<"12" | "24">("12");
 
   useEffect(() => {
     const sec = new Date().getSeconds();
@@ -34,11 +35,19 @@ function Home() {
     setCurTime(time);
   }
 
+  function calculateAmPm(curTime: string) {
+    if (clockMode === "24") {
+      return;
+    }
+    return Number(curTime.slice(0, 2)) < 12 ? "AM" : "PM";
+  }
+
   return (
     <Container>
       {isClockMode && (
         <>
           <NumberDisplay time={curTime} />
+          <AmPmIndicator>{calculateAmPm(curTime)}</AmPmIndicator>
         </>
       )}
       {isTimerMode && (
@@ -80,8 +89,8 @@ const Container = styled.div`
   margin: auto auto;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 2rem;
-  gap: 5rem;
   width: 40rem;
   height: 25rem;
   border: 3px solid ${Color.BLACK};
@@ -112,4 +121,10 @@ const Buttons = styled.div`
   border: 2px solid ${Color.BLACK};
   padding: 0.5rem;
   border-radius: 20px;
+`;
+
+const AmPmIndicator = styled.div`
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-left: 30rem;
 `;
