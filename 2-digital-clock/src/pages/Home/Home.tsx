@@ -6,10 +6,12 @@ import { Color } from "../../style/color";
 import Button from "../../components/Button/Button";
 
 function Home() {
-  const [isTimerMode, setIsTimerMode] = useState(false);
+  const [isTimerMode, setIsTimerMode] = useState<boolean>(false);
   const isClockMode = !isTimerMode;
-  const [curTime, setCurTime] = useState("0000");
+  const [curTime, setCurTime] = useState<string>("0000");
   const [clockMode, setClockMode] = useState<"12" | "24">("12");
+  const [stopwatch, setStopwatch] = useState<string>("0000");
+  const [stopwatchIntervalId, setStopwatchIntervalId] = useState<NodeJS.Timer>();
 
   useEffect(() => {
     const sec = new Date().getSeconds();
@@ -44,11 +46,10 @@ function Home() {
     function convertToHourIn12HourFormat(hour: number) {
       return hour % 12 === 0 ? 12 : hour % 12;
     }
-
-    function convertToTwoDigit(number: number) {
-      return number.toString().padStart(2, "0");
-    }
   }, [clockMode]);
+  function convertToTwoDigit(number: number) {
+    return number.toString().padStart(2, "0");
+  }
 
   function getMeridiemIndicator() {
     if (clockMode === "24") {
@@ -56,6 +57,15 @@ function Home() {
     }
     const curHour = new Date().getHours();
     return curHour < 12 ? "AM" : "PM";
+  }
+
+  function plusOneSecond(time: string) {
+    const curMinute = Number(time.slice(0, 2));
+    const curSecond = Number(time.slice(2, 4)) + 1;
+    if (curSecond >= 60) {
+      return `${convertToTwoDigit(curMinute + 1)}00`;
+    }
+    return `${convertToTwoDigit(curMinute)}${convertToTwoDigit(curSecond)}`;
   }
 
   return (
@@ -66,7 +76,7 @@ function Home() {
           <AmPmIndicator>{getMeridiemIndicator()}</AmPmIndicator>
         </>
       )}
-      {isTimerMode && <NumberDisplay time="0000" />}
+      {isTimerMode && <NumberDisplay time={stopwatch} />}
       <ControlPanel>
         <SwitchContainer>
           <TextContainer>
@@ -94,9 +104,27 @@ function Home() {
           )}
           {isTimerMode && (
             <>
-              <Button title="start" />
-              <Button title="pause" />
-              <Button title="reset" />
+              <Button
+                title="start"
+                onClick={() => {
+                  const intervalId = setInterval(() => {
+                    setStopwatch((prevStopwatch) => plusOneSecond(prevStopwatch));
+                  }, 1_000);
+                  setStopwatchIntervalId(intervalId);
+                }}
+              />
+              <Button
+                title="pause"
+                onClick={() => {
+                  clearInterval(stopwatchIntervalId);
+                }}
+              />
+              <Button
+                title="reset"
+                onClick={() => {
+                  setStopwatch("0000");
+                }}
+              />
             </>
           )}
         </Buttons>
