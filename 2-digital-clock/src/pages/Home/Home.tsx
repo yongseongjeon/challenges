@@ -68,6 +68,25 @@ function Home() {
     return `${convertToTwoDigit(curMinute)}${convertToTwoDigit(curSecond)}`;
   }
 
+  function handleStartStopwatch() {
+    if (stopwatchIntervalId) {
+      return;
+    }
+    const intervalId = setInterval(() => {
+      setStopwatch((prevStopwatch) => plusOneSecond(prevStopwatch));
+    }, 1_000);
+    setStopwatchIntervalId(intervalId);
+  }
+
+  function handlePauseStopwatch() {
+    clearInterval(stopwatchIntervalId);
+    setStopwatchIntervalId(undefined);
+  }
+
+  function handleResetStopwatch() {
+    setStopwatch("0000");
+  }
+
   return (
     <Container>
       {isClockMode && (
@@ -104,27 +123,9 @@ function Home() {
           )}
           {isTimerMode && (
             <>
-              <Button
-                title="start"
-                onClick={() => {
-                  const intervalId = setInterval(() => {
-                    setStopwatch((prevStopwatch) => plusOneSecond(prevStopwatch));
-                  }, 1_000);
-                  setStopwatchIntervalId(intervalId);
-                }}
-              />
-              <Button
-                title="pause"
-                onClick={() => {
-                  clearInterval(stopwatchIntervalId);
-                }}
-              />
-              <Button
-                title="reset"
-                onClick={() => {
-                  setStopwatch("0000");
-                }}
-              />
+              <Button title="start" onClick={handleStartStopwatch} />
+              <Button title="pause" onClick={handlePauseStopwatch} />
+              <Button title="reset" onClick={handleResetStopwatch} />
             </>
           )}
         </Buttons>
