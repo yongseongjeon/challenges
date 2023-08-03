@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import { Color } from "../../style/color";
+import { MouseEventHandler } from "react";
 
 interface ButtonProps {
   title: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-function Button({ title }: ButtonProps) {
-  return <Container type="button">{title}</Container>;
+function Button({ title, onClick }: ButtonProps) {
+  return (
+    <Container type="button" onClick={onClick}>
+      {title}
+    </Container>
+  );
 }
 
 export default Button;

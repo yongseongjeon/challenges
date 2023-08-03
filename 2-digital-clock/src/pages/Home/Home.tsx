@@ -6,9 +6,9 @@ import { Color } from "../../style/color";
 import Button from "../../components/Button/Button";
 
 function Home() {
-  const [isTimerMode, setIsTimerMode] = useState<boolean>(false);
+  const [isTimerMode, setIsTimerMode] = useState(false);
   const isClockMode = !isTimerMode;
-  const [curTime, setCurTime] = useState<string>("");
+  const [curTime, setCurTime] = useState("0000");
   const [clockMode, setClockMode] = useState<"12" | "24">("12");
 
   useEffect(() => {
@@ -17,29 +17,45 @@ function Home() {
     const ONE_MINUTE_MS = 60_000;
     updateCurTime();
 
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       updateCurTime();
-      const interval = setInterval(updateCurTime, ONE_MINUTE_MS);
+      const intervalId = setInterval(updateCurTime, ONE_MINUTE_MS);
 
       return () => {
-        clearInterval(interval);
+        clearInterval(intervalId);
       };
     }, timeUntilNextMinute);
-  }, []);
 
-  function updateCurTime() {
-    const now = new Date();
-    const hour = now.getHours().toString().padStart(2, "0");
-    const minute = now.getMinutes().toString().padStart(2, "0");
-    const time = `${hour}${minute}`;
-    setCurTime(time);
-  }
+    return () => {
+      clearTimeout(timeoutId);
+    };
 
-  function calculateAmPm(curTime: string) {
+    function updateCurTime() {
+      const now = new Date();
+      const curHour = now.getHours();
+      const hourIn12HourFormat = convertToHourIn12HourFormat(curHour);
+      const twoDigitHour = clockMode === "12" ? convertToTwoDigit(hourIn12HourFormat) : convertToTwoDigit(curHour);
+      const curMinute = now.getMinutes();
+      const twoDigitMinute = convertToTwoDigit(curMinute);
+      const fourDigitCurTime = `${twoDigitHour}${twoDigitMinute}`;
+      setCurTime(fourDigitCurTime);
+    }
+
+    function convertToHourIn12HourFormat(hour: number) {
+      return hour % 12 === 0 ? 12 : hour % 12;
+    }
+
+    function convertToTwoDigit(number: number) {
+      return number.toString().padStart(2, "0");
+    }
+  }, [clockMode]);
+
+  function getMeridiemIndicator() {
     if (clockMode === "24") {
       return;
     }
-    return Number(curTime.slice(0, 2)) < 12 ? "AM" : "PM";
+    const curHour = new Date().getHours();
+    return curHour < 12 ? "AM" : "PM";
   }
 
   return (
@@ -47,14 +63,10 @@ function Home() {
       {isClockMode && (
         <>
           <NumberDisplay time={curTime} />
-          <AmPmIndicator>{calculateAmPm(curTime)}</AmPmIndicator>
+          <AmPmIndicator>{getMeridiemIndicator()}</AmPmIndicator>
         </>
       )}
-      {isTimerMode && (
-        <>
-          <NumberDisplay time="0000" />
-        </>
-      )}
+      {isTimerMode && <NumberDisplay time="0000" />}
       <ControlPanel>
         <SwitchContainer>
           <TextContainer>
@@ -66,8 +78,18 @@ function Home() {
         <Buttons>
           {isClockMode && (
             <>
-              <Button title="12" />
-              <Button title="24" />
+              <Button
+                title="12"
+                onClick={() => {
+                  setClockMode("12");
+                }}
+              />
+              <Button
+                title="24"
+                onClick={() => {
+                  setClockMode("24");
+                }}
+              />
             </>
           )}
           {isTimerMode && (
