@@ -13,8 +13,8 @@ function Colon() {
 
   return (
     <Container>
-      <Circle isBlink={isBlink} />
-      <Circle isBlink={isBlink} />
+      <Circle $isBlink={isBlink} />
+      <Circle $isBlink={isBlink} />
     </Container>
   );
 }
@@ -30,10 +30,10 @@ const Container = styled.div`
   right: 36px;
 `;
 
-const Circle = styled.div<{ isBlink: boolean }>`
+const Circle = styled.div<{ $isBlink: boolean }>`
   width: 1rem;
   height: 1rem;
   border: 1px solid ${Color.BLACK};
   border-radius: 10px;
-  background-color: ${({ isBlink }) => (isBlink ? Color.GREEN : Color.WHITE)};
+  background-color: ${({ $isBlink }) => ($isBlink ? Color.GREEN : Color.WHITE)};
 `;
