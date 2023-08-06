@@ -1,6 +1,6 @@
 import RatingForm from "./components/RatingForm/RatingForm.js";
 
-let state = { starRating: 3 };
+let state = { starRating: 4 };
 
 function setState(newState) {
   state = { ...state, newState };
