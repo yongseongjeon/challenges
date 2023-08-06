@@ -1,3 +1,4 @@
+import { setState } from "../../script.js";
 import FiveStar from "../FiveStar/FiveStar.js";
 
 const RATING_MESSAGE = {
@@ -22,6 +23,16 @@ class RatingForm {
   }
   render() {
     this.container.innerHTML = this.template();
+    this.addEvent();
+  }
+  addEvent() {
+    document.querySelector(".star-container").addEventListener("click", (e) => {
+      if (e.target.tagName === "path") {
+        const children = Array.from(e.target.parentNode.parentNode.children);
+        const idx = children.indexOf(e.target.parentNode);
+        setState({ starRating: idx + 1 });
+      }
+    });
   }
 }
 
