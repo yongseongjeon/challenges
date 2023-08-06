@@ -19,23 +19,53 @@ class RatingForm {
     this.addEvent();
   }
   addEvent() {
-    document.querySelector(".star-container").addEventListener("click", (e) => handleStarClick(e));
+    const starContainer = document.querySelector(".star-container");
+    starContainer.addEventListener("click", (e) => this.handleStarClick(e));
+    starContainer.addEventListener("mouseover", (e) => this.handleStarMouseOver(e));
+    starContainer.addEventListener("mouseleave", () => this.handleStarMouseLeave());
   }
 }
 
-function handleStarClick(e) {
+RatingForm.prototype.handleStarMouseLeave = function () {
+  const stars = document.querySelectorAll(".star");
+  stars.forEach((star) => {
+    star.classList.remove("active");
+    star.classList.remove("inactive");
+  });
+};
+
+RatingForm.prototype.handleStarMouseOver = function (e) {
+  const { target } = e;
+  const isOveredStar = target.tagName === "path";
+  if (isOveredStar) {
+    const overedStarIndex = this.getStarIndex(target);
+    const stars = document.querySelectorAll(".star");
+    stars.forEach((star, i) => {
+      const isLeftOfOveredStar = i <= overedStarIndex;
+      if (isLeftOfOveredStar) {
+        star.classList.add("active");
+        star.classList.remove("inactive");
+        return;
+      }
+      star.classList.add("inactive");
+      star.classList.remove("active");
+    });
+  }
+};
+
+RatingForm.prototype.handleStarClick = function (e) {
   const { target } = e;
   const isClickedStar = target.tagName === "path";
   if (isClickedStar) {
-    const clickedStarIndex = getStarIndex(target);
+    const clickedStarIndex = this.getStarIndex(target);
     setState({ starRating: clickedStarIndex + 1 });
   }
-}
+};
 
-function getStarIndex(target) {
+RatingForm.prototype.getStarIndex = function (target) {
   const star = target.parentNode;
   const stars = [...star.parentNode.children];
   return stars.indexOf(star);
-}
+};
 
 export default RatingForm;
