@@ -2,7 +2,7 @@ import RatingForm from "./components/RatingForm/RatingForm.js";
 
 let state = { starRating: 3 };
 
-export function setState(newState) {
+function setState(newState) {
   state = { ...state, ...newState };
   renderApp();
 }
@@ -14,3 +14,5 @@ function renderApp() {
 }
 
 renderApp();
+
+export { setState };
