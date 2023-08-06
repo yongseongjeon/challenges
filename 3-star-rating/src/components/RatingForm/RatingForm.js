@@ -24,11 +24,18 @@ class RatingForm {
 }
 
 function handleStarClick(e) {
-  if (e.target.tagName === "path") {
-    const children = Array.from(e.target.parentNode.parentNode.children);
-    const idx = children.indexOf(e.target.parentNode);
-    setState({ starRating: idx + 1 });
+  const { target } = e;
+  const isClickedStar = target.tagName === "path";
+  if (isClickedStar) {
+    const clickedStarIndex = getStarIndex(target);
+    setState({ starRating: clickedStarIndex + 1 });
   }
+}
+
+function getStarIndex(target) {
+  const star = target.parentNode;
+  const stars = [...star.parentNode.children];
+  return stars.indexOf(star);
 }
 
 export default RatingForm;
