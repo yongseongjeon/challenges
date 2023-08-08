@@ -1,5 +1,5 @@
-import Carousel from "./components/Carousel/Carousel";
-import Home from "./components/Home/Home";
+import Carousel from "./pages/Carousel/Carousel";
+import Home from "./pages/Home/Home";
 import { RoutePath } from "./types/Route";
 
 export enum ROUTE_PATH {
