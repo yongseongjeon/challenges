@@ -1,5 +1,7 @@
+import { PageWrapper } from "../../styles/components/PageWrapper.styled";
+
 function Carousel() {
-  return <div>Carousel page</div>;
+  return <PageWrapper>Carousel page</PageWrapper>;
 }
 
 export default Carousel;

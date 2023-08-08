@@ -1,5 +1,7 @@
+import { PageWrapper } from "../../styles/components/PageWrapper.styled";
+
 function Home() {
-  return <div>Home page</div>;
+  return <PageWrapper>Home page</PageWrapper>;
 }
 
 export default Home;
