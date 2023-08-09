@@ -1,12 +1,11 @@
-import { MouseEvent } from "react";
-import Button from "../common/Button/Button";
+import InputFile from "../common/InputFile/InputFile";
 
 function AddPictureButton() {
-  return <Button name="사진 추가" onClick={handleClick} />;
+  return <InputFile name="사진 추가" onClick={handleClick} />;
 }
 
-function handleClick(e: MouseEvent<HTMLButtonElement>) {
-  console.log("Clicked 사진 추가 Button.");
+function handleClick() {
+  console.log("Clicked 사진 추가 InputFile.");
 }
 
 export default AddPictureButton;
