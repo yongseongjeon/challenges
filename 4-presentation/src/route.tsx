@@ -1,10 +1,9 @@
-import Carousel from "./pages/Carousel/Carousel";
+import Presentation from "./pages/Presentation/Presentation";
 import Home from "./pages/Home/Home";
-import { RoutePath } from "./types/Route";
 
-export enum ROUTE_PATH {
-  HOME = "/",
-  CAROUSEL = "/carousel",
+export enum RoutePath {
+  Home = "/",
+  Presentation = "/presentation",
 }
 
 export interface RouteConfig {
@@ -14,6 +13,6 @@ export interface RouteConfig {
 }
 
 export const routeConfigs: RouteConfig[] = [
-  { id: 0, path: ROUTE_PATH.HOME, element: <Home /> },
-  { id: 1, path: ROUTE_PATH.CAROUSEL, element: <Carousel /> },
+  { id: 0, path: RoutePath.Home, element: <Home /> },
+  { id: 1, path: RoutePath.Presentation, element: <Presentation /> },
 ];
