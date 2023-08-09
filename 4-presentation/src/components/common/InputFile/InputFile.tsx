@@ -6,12 +6,13 @@ import { MouseEventHandler } from "react";
 interface InputFileProp {
   name: string;
   onClick?: MouseEventHandler;
+  accept?: string;
 }
 
-function InputFile({ name, onClick }: InputFileProp) {
+function InputFile({ name, onClick, accept }: InputFileProp) {
   return (
     <>
-      <StyledInputFile type="file" onClick={onClick} id="input-file"></StyledInputFile>
+      <StyledInputFile type="file" onClick={onClick} id="input-file" accept={accept}></StyledInputFile>
       <Label htmlFor="input-file">{name}</Label>
     </>
   );

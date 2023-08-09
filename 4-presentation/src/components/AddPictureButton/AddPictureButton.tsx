@@ -1,7 +1,9 @@
 import InputFile from "../common/InputFile/InputFile";
 
 function AddPictureButton() {
-  return <InputFile name="사진 추가" onClick={handleClick} />;
+  const allowedFileExtention = ".png, .jpeg";
+
+  return <InputFile name="사진 추가" onClick={handleClick} accept={allowedFileExtention} />;
 }
 
 function handleClick() {
