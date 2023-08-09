@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import { CommonStyle } from "../../../styles/commonStyle";
 import { Color } from "../../../styles/color";
-import { MouseEventHandler } from "react";
+import { ChangeEventHandler } from "react";
 
 interface InputFileProp {
   name: string;
-  onClick?: MouseEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   accept?: string;
+  isMultiple?: boolean;
 }
 
-function InputFile({ name, onClick, accept }: InputFileProp) {
+function InputFile({ name, onChange, accept, isMultiple }: InputFileProp) {
   return (
     <>
-      <StyledInputFile type="file" onClick={onClick} id="input-file" accept={accept}></StyledInputFile>
+      <StyledInputFile type="file" onChange={onChange} id="input-file" accept={accept} multiple={isMultiple}></StyledInputFile>
       <Label htmlFor="input-file">{name}</Label>
     </>
   );

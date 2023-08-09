@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "../types/Route";
+import { RoutePath } from "../route";
 
 function useRouter() {
   const router = useNavigate();
