@@ -19,6 +19,7 @@ function Button({ name, onClick }: ButtonProp) {
 export default Button;
 
 const StyledButton = styled.button`
+  width: fit-content;
   padding: 1rem;
   ${CommonStyle.BlackBorder}
   ${CommonStyle.BorderRadius}
