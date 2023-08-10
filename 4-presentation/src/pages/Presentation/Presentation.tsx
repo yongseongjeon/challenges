@@ -18,7 +18,7 @@ function Presentation() {
     <PageWrapper>
       <PresentationWrapper>
         <Carousel srcs={srcs} curPictureIdx={curPictureIdx} setCurPictureIdx={setCurPictureIdx} />
-        <ThumbnailList activeThumnailIndex={curPictureIdx + 1} />
+        <ThumbnailList activeThumnailIndex={curPictureIdx} />
         <ThumnailIndexIndicator>
           {curPictureIdx + 1} / {totalPictureNumber}
         </ThumnailIndexIndicator>
