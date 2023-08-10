@@ -13,11 +13,12 @@ interface CarouselProp {
 
 function Carousel({ srcs, curPictureIdx, setCurPictureIdx }: CarouselProp) {
   const [isMoving, setIsMoving] = useState(false);
-  const lastIndex = srcs.length - 1;
+  const isFirstIndex = curPictureIdx === 0;
+  const isLastIndex = curPictureIdx === srcs.length - 1;
 
   return (
     <CarouselWrapper>
-      <ArrowLeftButton onClick={handleClickArrowLeft} disabled={isMoving} />
+      <ArrowLeftButton onClick={handleClickArrowLeft} disabled={isMoving || isFirstIndex} />
       <PicturesWrapper>
         <Pictures
           idx={curPictureIdx}
@@ -30,27 +31,17 @@ function Carousel({ srcs, curPictureIdx, setCurPictureIdx }: CarouselProp) {
           })}
         </Pictures>
       </PicturesWrapper>
-      <ArrowRightButton onClick={handleClickArrowRight} disabled={isMoving} />
+      <ArrowRightButton onClick={handleClickArrowRight} disabled={isMoving || isLastIndex} />
     </CarouselWrapper>
   );
 
   function handleClickArrowLeft() {
     setIsMoving(true);
-    const isFirstIndex = curPictureIdx === 0;
-    if (isFirstIndex) {
-      setCurPictureIdx(lastIndex);
-      return;
-    }
     setCurPictureIdx(curPictureIdx - 1);
   }
 
   function handleClickArrowRight() {
     setIsMoving(true);
-    const isLastIndex = curPictureIdx === lastIndex;
-    if (isLastIndex) {
-      setCurPictureIdx(0);
-      return;
-    }
     setCurPictureIdx(curPictureIdx + 1);
   }
 }
@@ -62,29 +53,38 @@ const CarouselWrapper = styled.div`
   gap: 2rem;
 `;
 
-const ArrowLeftButton = styled.button`
+const ArrowButton = styled.button`
   width: 0;
   height: 0;
-  border-top: 2rem solid transparent;
-  border-bottom: 2rem solid transparent;
+  border-top: 2rem solid ${Color.White};
+  border-bottom: 2rem solid ${Color.White};
+
+  &:disabled {
+    cursor: auto;
+  }
+`;
+
+const ArrowLeftButton = styled(ArrowButton)`
   border-right: 2rem solid ${Color.GreenDarnerTail};
-  cursor: pointer;
 
   &:hover {
     border-right: 2rem solid ${Color.ElectronBlue};
   }
+
+  &:disabled {
+    border-right: 2rem solid ${Color.Grey};
+  }
 `;
 
-const ArrowRightButton = styled.button`
-  width: 0;
-  height: 0;
-  border-top: 2rem solid transparent;
-  border-bottom: 2rem solid transparent;
+const ArrowRightButton = styled(ArrowButton)`
   border-left: 2rem solid ${Color.GreenDarnerTail};
-  cursor: pointer;
 
   &:hover {
     border-left: 2rem solid ${Color.ElectronBlue};
+  }
+
+  &:disabled {
+    border-left: 2rem solid ${Color.Grey};
   }
 `;
 
