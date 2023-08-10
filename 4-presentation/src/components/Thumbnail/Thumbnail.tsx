@@ -5,7 +5,7 @@ import { CommonStyle } from "../../styles/commonStyle";
 import { Color } from "../../styles/color";
 import { picturesState } from "../../store/pictures";
 
-interface Thumbnail {
+interface ThumbnailProp {
   src: string;
   idx: number;
   isActive: boolean;
@@ -13,7 +13,7 @@ interface Thumbnail {
   onClick: () => void;
 }
 
-function Thumbnail({ src, idx, isActive, setCurPictureIdx, onClick }: Thumbnail) {
+function Thumbnail({ src, idx, isActive, setCurPictureIdx, onClick }: ThumbnailProp) {
   const [isHover, setIsHover] = useState(false);
   const [pictures, setPictures] = useRecoilState(picturesState);
 
@@ -26,7 +26,7 @@ function Thumbnail({ src, idx, isActive, setCurPictureIdx, onClick }: Thumbnail)
         setIsHover(false);
       }}
     >
-      <Img src={src} alt="유저가 업로드한 사진입니다." $isActive={isActive} onClick={onClick}></Img>
+      <Img $src={src} $isActive={isActive} onClick={onClick}></Img>
       {isHover && (
         <DeleteButton
           onClick={() => {
@@ -46,13 +46,15 @@ export default Thumbnail;
 
 const ThumbnailWrapper = styled.div``;
 
-const Img = styled.img<{ $isActive: boolean }>`
+const Img = styled.div<{ $src: string; $isActive: boolean }>`
   width: 5rem;
   height: 5rem;
   ${CommonStyle.BlackBorder}
   ${CommonStyle.BorderRadius}
   border-color: ${({ $isActive }) => ($isActive ? Color.ElectronBlue : Color.Black)};
   cursor: pointer;
+  background-image: ${({ $src }) => `url(${$src})`};
+  background-size: cover;
 `;
 
 const DeleteButton = styled.button`
