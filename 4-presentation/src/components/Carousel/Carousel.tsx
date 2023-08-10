@@ -61,6 +61,8 @@ const ArrowRightButton = styled.div`
 const Img = styled.img`
   width: 30rem;
   height: 30rem;
+  ${CommonStyle.BlackBorder}
+  ${CommonStyle.BorderRadius}
 `;
 
 const PicturesWrapper = styled.div`
