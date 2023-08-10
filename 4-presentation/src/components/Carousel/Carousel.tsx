@@ -1,17 +1,17 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
-import useFileReader from "../../hooks/useFileReader";
-import { useRecoilValue } from "recoil";
-import { picturesState } from "../../store/pictures";
 import { Color } from "../../styles/color";
 import { CommonStyle } from "../../styles/commonStyle";
-import { useState } from "react";
 
 const PICTURE_SIZE = "480";
 
-function Carousel() {
-  const pictures = useRecoilValue(picturesState);
-  const srcs = useFileReader({ files: pictures });
-  const [curPictureIdx, setCurPictureIdx] = useState(0);
+interface CarouselProp {
+  srcs: string[];
+  curPictureIdx: number;
+  setCurPictureIdx: Dispatch<SetStateAction<number>>;
+}
+
+function Carousel({ srcs, curPictureIdx, setCurPictureIdx }: CarouselProp) {
   const [isMoving, setIsMoving] = useState(false);
   const lastIndex = srcs.length - 1;
 
