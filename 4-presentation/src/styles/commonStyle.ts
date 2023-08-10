@@ -1,8 +1,23 @@
 import { Color } from "./color";
 
 export const CommonStyle = {
-  Center: `justify-content: center; align-items: center;`,
   BlackBorder: `border: 2px solid ${Color.Black};`,
   BorderRadius: `border-radius: 20px;`,
-  FlexColumn: `display: flex; flex-direction: column;`,
-};
+  FlexCenter: `${flexStyle({ justifyContent: "center", alignItems: "center" })}`,
+  FlexColumn: `${flexStyle({ direction: "column" })}`,
+} as const;
+
+interface FlexStyleProp {
+  direction?: "row" | "row-reverse" | "column" | "column-reverse";
+  justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+  alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
+}
+
+export function flexStyle({ direction = "row", justifyContent = "flex-start", alignItems = "flex-start" }: FlexStyleProp) {
+  return `
+    display: flex;
+    flex-direction: ${direction};
+    justify-content: ${justifyContent};
+    align-items: ${alignItems};
+  `;
+}

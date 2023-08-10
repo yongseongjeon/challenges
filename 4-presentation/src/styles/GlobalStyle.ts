@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import { CommonStyle } from "./commonStyle";
+import { CommonStyle, flexStyle } from "./commonStyle";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -16,8 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     height: inherit;
-    display: flex;
-    ${CommonStyle.Center}
+    ${CommonStyle.FlexCenter}
   }
 
   button {
