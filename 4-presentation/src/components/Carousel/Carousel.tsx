@@ -21,7 +21,7 @@ function Carousel({ srcs, curPictureIdx, setCurPictureIdx }: CarouselProp) {
       <ArrowLeftButton onClick={handleClickArrowLeft} disabled={isMoving || isFirstIndex} />
       <PicturesWrapper>
         <Pictures
-          idx={curPictureIdx}
+          $idx={curPictureIdx}
           onTransitionEnd={() => {
             setIsMoving(false);
           }}
@@ -101,8 +101,8 @@ const PicturesWrapper = styled.div`
   overflow: hidden;
 `;
 
-const Pictures = styled.div<{ idx: number }>`
+const Pictures = styled.div<{ $idx: number }>`
   display: flex;
-  transform: ${({ idx }) => `translateX(${-PICTURE_SIZE * idx}px)`};
+  transform: ${({ $idx }) => `translateX(${-PICTURE_SIZE * $idx}px)`};
   transition: 0.25s;
 `;

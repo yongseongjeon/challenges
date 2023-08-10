@@ -15,7 +15,7 @@ function useFileReader({ files }: useFileReaderProp): string[] {
       const results = await Promise.all(promises);
       setSrcs(results as string[]);
     }
-  }, files);
+  }, [files]);
 
   return srcs;
 }
