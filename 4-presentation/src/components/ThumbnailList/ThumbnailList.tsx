@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { picturesState } from "../../store/pictures";
@@ -7,9 +8,10 @@ import { Color } from "../../styles/color";
 
 interface ThumbnailListProp {
   activeThumnailIndex: number;
+  setCurPictureIdx: Dispatch<SetStateAction<number>>;
 }
 
-function ThumbnailList({ activeThumnailIndex }: ThumbnailListProp) {
+function ThumbnailList({ activeThumnailIndex, setCurPictureIdx }: ThumbnailListProp) {
   const pictures = useRecoilValue(picturesState);
   const srcs = useFileReader({ files: pictures });
 
@@ -17,7 +19,16 @@ function ThumbnailList({ activeThumnailIndex }: ThumbnailListProp) {
     <ThumbnailListWrapper>
       <ImgWrapper>
         {srcs.map((src, idx) => {
-          return <Img src={src} alt="유저가 업로드한 사진입니다." isActive={idx === activeThumnailIndex} />;
+          return (
+            <Img
+              src={src}
+              alt="유저가 업로드한 사진입니다."
+              isActive={idx === activeThumnailIndex}
+              onClick={() => {
+                setCurPictureIdx(idx);
+              }}
+            />
+          );
         })}
       </ImgWrapper>
     </ThumbnailListWrapper>
@@ -42,4 +53,5 @@ const Img = styled.img<{ isActive: boolean }>`
   ${CommonStyle.BlackBorder}
   ${CommonStyle.BorderRadius}
   border-color: ${({ isActive }) => (isActive ? Color.ElectronBlue : Color.Black)};
+  cursor: pointer;
 `;
