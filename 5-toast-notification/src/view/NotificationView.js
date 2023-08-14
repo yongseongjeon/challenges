@@ -1,10 +1,11 @@
-import { $ } from "../util.js";
+import { $, $All } from "../util.js";
 import Button from "./Button.js";
 import ToastMessage from "./ToastMessage.js";
 
 class NotificationView {
-  setHandler({ onClickHandler }) {
+  setHandler({ onClickHandler, onCloseHandler }) {
     this.onClickHandler = onClickHandler;
+    this.onCloseHandler = onCloseHandler;
   }
   template({ notifications }) {
     return `<div class="buttons">
@@ -14,7 +15,9 @@ class NotificationView {
               ${Button({ title: "Error" })}
             </div>
             <div class="toast-message-container">
-              ${notifications.map(({ type, message }) => ToastMessage({ type, message: `${message} toast notification.` })).join("")}
+              ${notifications
+                .map(({ type, message }, index) => ToastMessage({ type, message: `${message} toast notification.`, index }))
+                .join("")}
             </div>`;
   }
   render({ notifications }) {
@@ -25,6 +28,12 @@ class NotificationView {
     $(".buttons").addEventListener("click", (e) => {
       const [type] = e.target.className.split("-");
       this.onClickHandler({ type, message: `${type} toast notifications` });
+    });
+    $All(`.close-button`).forEach((el) => {
+      el.addEventListener("click", (e) => {
+        const { index } = e.target.dataset;
+        this.onCloseHandler({ index });
+      });
     });
   }
 }
