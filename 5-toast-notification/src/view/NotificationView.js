@@ -9,10 +9,10 @@ class NotificationView {
   }
   template({ notifications }) {
     return `<div class="buttons">
-              ${Button({ type: "success", title: "Success" })}
-              ${Button({ type: "info", title: "Info" })}
-              ${Button({ type: "warning", title: "Warning" })}
-              ${Button({ type: "error", title: "Error" })}
+              ${Button({ type: "Success", title: "Success" })}
+              ${Button({ type: "Info", title: "Info" })}
+              ${Button({ type: "Warning", title: "Warning" })}
+              ${Button({ type: "Error", title: "Error" })}
             </div>
             <div class="toast-message-container">
               ${notifications
@@ -26,7 +26,7 @@ class NotificationView {
   }
   setEvent() {
     $(".buttons").addEventListener("click", (e) => {
-      const [type] = e.target.className.split("-");
+      const type = e.target.textContent;
       this.onClickHandler({ type, message: `${type} toast notifications` });
     });
     $All(`.close-button`).forEach((el) => {
