@@ -9,10 +9,10 @@ class NotificationView {
   }
   template({ notifications }) {
     return `<div class="buttons">
-              ${Button({ title: "Success" })}
-              ${Button({ title: "Info" })}
-              ${Button({ title: "Warning" })}
-              ${Button({ title: "Error" })}
+              ${Button({ type: "success", title: "Success" })}
+              ${Button({ type: "info", title: "Info" })}
+              ${Button({ type: "warning", title: "Warning" })}
+              ${Button({ type: "error", title: "Error" })}
             </div>
             <div class="toast-message-container">
               ${notifications
