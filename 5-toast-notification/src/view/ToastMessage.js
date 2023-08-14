@@ -1,7 +1,7 @@
-function ToastMessage({ type, message, index }) {
-  return `<div>
+function ToastMessage({ id, type, message }) {
+  return `<div class="toast-message">
             <div>${message}</div>
-            <span class="close-button" data-index="${index}">X</span>
+            <span class="close-button" data-id="${id}">X</span>
           </div>`;
 }
 

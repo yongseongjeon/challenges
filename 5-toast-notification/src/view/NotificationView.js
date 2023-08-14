@@ -16,7 +16,7 @@ class NotificationView {
             </div>
             <div class="toast-message-container">
               ${notifications
-                .map(({ type, message }, index) => ToastMessage({ type, message: `${message} toast notification.`, index }))
+                .map(({ id, type, message }) => ToastMessage({ id, type, message: `${message} toast notification.` }))
                 .join("")}
             </div>`;
   }
@@ -31,8 +31,8 @@ class NotificationView {
     });
     $All(`.close-button`).forEach((el) => {
       el.addEventListener("click", (e) => {
-        const { index } = e.target.dataset;
-        this.onCloseHandler({ index });
+        const id = +e.target.dataset.id;
+        this.onCloseHandler({ id });
       });
     });
   }

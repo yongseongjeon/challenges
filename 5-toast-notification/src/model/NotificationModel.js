@@ -3,12 +3,14 @@ class NotificationModel {
     this.notifications = [];
     this.subscribers = [];
   }
-  addNotification(notification) {
-    this.notifications.push(notification);
+  addNotification({ notification }) {
+    const id = new Date().getTime();
+    this.notifications.push({ id, ...notification });
     this.notify();
+    return id;
   }
-  removeNotification(notificationIndex) {
-    this.notifications = this.notifications.filter((_, index) => index !== +notificationIndex);
+  removeNotification({ id }) {
+    this.notifications = this.notifications.filter((notification) => notification.id !== id);
     this.notify();
   }
   notify() {
