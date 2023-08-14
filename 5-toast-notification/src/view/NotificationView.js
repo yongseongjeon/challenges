@@ -3,6 +3,9 @@ import Button from "./Button.js";
 import ToastMessage from "./ToastMessage.js";
 
 class NotificationView {
+  setHandler({ onClickHandler }) {
+    this.onClickHandler = onClickHandler;
+  }
   template({ notifications }) {
     return `<div class="buttons">
               ${Button({ title: "Success" })}
@@ -18,7 +21,12 @@ class NotificationView {
     $("body").innerHTML = this.template({ notifications });
     this.setEvent();
   }
-  setEvent() {}
+  setEvent() {
+    $(".buttons").addEventListener("click", (e) => {
+      const [type] = e.target.className.split("-");
+      this.onClickHandler({ type, message: `${type} toast notifications` });
+    });
+  }
 }
 
 export default NotificationView;

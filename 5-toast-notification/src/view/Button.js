@@ -1,5 +1,5 @@
 function Button({ title }) {
-  return `<button type="button">${title}</button>`;
+  return `<button class="${title}-button" type="button">${title}</button>`;
 }
 
 export default Button;
