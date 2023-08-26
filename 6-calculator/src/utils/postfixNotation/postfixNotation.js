@@ -19,11 +19,11 @@ export function convertToPostfixNotation(infixNotation) {
       outputQueue.push(el);
       return;
     }
-    if (!operatorStack.length || OPERATOR_PRIORITY[el] >= OPERATOR_PRIORITY[operatorStack.at(-1)]) {
+    if (!operatorStack.length || OPERATOR_PRIORITY[el] > OPERATOR_PRIORITY[operatorStack.at(-1)]) {
       operatorStack.push(el);
       return;
     }
-    while (operatorStack.length > 0 && OPERATOR_PRIORITY[el] < OPERATOR_PRIORITY[operatorStack.at(-1)]) {
+    while (operatorStack.length > 0 && OPERATOR_PRIORITY[el] <= OPERATOR_PRIORITY[operatorStack.at(-1)]) {
       const topEl = operatorStack.pop();
       outputQueue.push(topEl);
     }

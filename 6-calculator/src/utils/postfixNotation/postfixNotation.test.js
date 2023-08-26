@@ -15,10 +15,10 @@ describe("후위표현식으로 변환하면", () => {
   });
   it("a+b*c-d/e 는 abc*de/-+ 이다.", () => {
     const answer = convertToPostfixNotation("a+b*c-d/e");
-    expect(answer).toBe("abc*de/-+");
+    expect(answer).toBe("abc*+de/-");
   });
   it("a-b*c*d+e/f 는 abcd**ef/+- 이다.", () => {
     const answer = convertToPostfixNotation("a-b*c*d+e/f");
-    expect(answer).toBe("abcd**ef/+-");
+    expect(answer).toBe("abc*d*-ef/+");
   });
 });
