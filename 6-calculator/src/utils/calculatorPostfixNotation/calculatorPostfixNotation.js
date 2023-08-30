@@ -1,7 +1,7 @@
 import { isOperator } from "../postfixNotation/postfixNotation";
 
-export function calculatePostfixNotation(string) {
-  const postfixNotationList = string.split("").reverse();
+export function calculatePostfixNotation(postfixNotation) {
+  const postfixNotationList = postfixNotation.reverse();
   const s = [postfixNotationList.pop()];
   while (postfixNotationList.length > 0) {
     const cur = postfixNotationList.pop();

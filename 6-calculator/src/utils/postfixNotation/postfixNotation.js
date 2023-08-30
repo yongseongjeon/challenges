@@ -10,8 +10,7 @@ export function isOperator(string) {
   return OPERATORS.includes(string);
 }
 
-export function convertToPostfixNotation(infixNotation) {
-  const infixNotationList = infixNotation.split("");
+export function convertToPostfixNotation(infixNotationList) {
   const outputQueue = [];
   const operatorStack = [];
   infixNotationList.forEach((el) => {
@@ -31,5 +30,5 @@ export function convertToPostfixNotation(infixNotation) {
   });
   operatorStack.reverse().forEach((el) => outputQueue.push(el));
 
-  return outputQueue.join("");
+  return outputQueue;
 }
