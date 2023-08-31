@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import styled from "styled-components";
 import useCalculator from "../hooks/useCalculator";
 import Button from "./Button";
@@ -5,6 +6,22 @@ import Button from "./Button";
 function Calculator() {
   const { state, handlers } = useCalculator();
   const { formula, operator, input, result, isPressedEqualButton } = state;
+
+  const handleClickMod = useCallback(() => handlers.handleClickOperator("%"), []);
+  const handleClickDivide = useCallback(() => handlers.handleClickOperator("/"), []);
+  const handleClickMultiply = useCallback(() => handlers.handleClickOperator("*"), []);
+  const handleClickMinus = useCallback(() => handlers.handleClickOperator("-"), []);
+  const handleClickPlus = useCallback(() => handlers.handleClickOperator("+"), []);
+  const handleClickZero = useCallback(() => handlers.handleClickOperand("0"), []);
+  const handleClickOne = useCallback(() => handlers.handleClickOperand("1"), []);
+  const handleClickTwo = useCallback(() => handlers.handleClickOperand("2"), []);
+  const handleClickThree = useCallback(() => handlers.handleClickOperand("3"), []);
+  const handleClickFour = useCallback(() => handlers.handleClickOperand("4"), []);
+  const handleClickFive = useCallback(() => handlers.handleClickOperand("5"), []);
+  const handleClickSix = useCallback(() => handlers.handleClickOperand("6"), []);
+  const handleClickSeven = useCallback(() => handlers.handleClickOperand("7"), []);
+  const handleClickEight = useCallback(() => handlers.handleClickOperand("8"), []);
+  const handleClickNine = useCallback(() => handlers.handleClickOperand("9"), []);
 
   return (
     <>
@@ -14,24 +31,24 @@ function Calculator() {
       </FormulaDisplay>
       <ResultDisplay>{input || result}</ResultDisplay>
       <ButtonContainer>
-        <Button label={"%"} onClick={() => handlers.handleClickOperator("%")} />
+        <Button label={"%"} onClick={handleClickMod} />
         <Button label={"C"} onClick={handlers.handleClickReset} />
         <Button label={"←"} onClick={handlers.handleClickEraseInput} />
-        <Button label={"/"} onClick={() => handlers.handleClickOperator("/")} />
-        <Button label={"7"} onClick={() => handlers.handleClickOperand("7")} />
-        <Button label={"8"} onClick={() => handlers.handleClickOperand("8")} />
-        <Button label={"9"} onClick={() => handlers.handleClickOperand("9")} />
-        <Button label={"*"} onClick={() => handlers.handleClickOperator("*")} />
-        <Button label={"4"} onClick={() => handlers.handleClickOperand("4")} />
-        <Button label={"5"} onClick={() => handlers.handleClickOperand("5")} />
-        <Button label={"6"} onClick={() => handlers.handleClickOperand("6")} />
-        <Button label={"-"} onClick={() => handlers.handleClickOperator("-")} />
-        <Button label={"1"} onClick={() => handlers.handleClickOperand("1")} />
-        <Button label={"2"} onClick={() => handlers.handleClickOperand("2")} />
-        <Button label={"3"} onClick={() => handlers.handleClickOperand("3")} />
-        <Button label={"+"} onClick={() => handlers.handleClickOperator("+")} />
+        <Button label={"/"} onClick={handleClickDivide} />
+        <Button label={"7"} onClick={handleClickSeven} />
+        <Button label={"8"} onClick={handleClickEight} />
+        <Button label={"9"} onClick={handleClickNine} />
+        <Button label={"*"} onClick={handleClickMultiply} />
+        <Button label={"4"} onClick={handleClickFour} />
+        <Button label={"5"} onClick={handleClickFive} />
+        <Button label={"6"} onClick={handleClickSix} />
+        <Button label={"-"} onClick={handleClickMinus} />
+        <Button label={"1"} onClick={handleClickOne} />
+        <Button label={"2"} onClick={handleClickTwo} />
+        <Button label={"3"} onClick={handleClickThree} />
+        <Button label={"+"} onClick={handleClickPlus} />
         <Button label={"+/-"} onClick={handlers.handleClickPlusMinus} />
-        <Button label={"0"} onClick={() => handlers.handleClickOperand("0")} />
+        <Button label={"0"} onClick={handleClickZero} />
         <Button label={"."} onClick={handlers.handleClickPoint} />
         <Button label={"="} onClick={handlers.handleClickEqual} />
       </ButtonContainer>
