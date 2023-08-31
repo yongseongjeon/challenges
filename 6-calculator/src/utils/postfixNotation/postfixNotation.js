@@ -1,7 +1,8 @@
-const OPERATORS = ["+", "-", "*", "/"];
+const OPERATORS = ["+", "-", "*", "/", "%"];
 const OPERATOR_PRIORITY = {
   "*": 2,
   "/": 2,
+  "%": 2,
   "+": 1,
   "-": 1,
 };

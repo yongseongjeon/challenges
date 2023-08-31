@@ -8,7 +8,7 @@ export function calculatePostfixNotation(postfixNotation) {
     if (isOperator(cur)) {
       const right = +s.pop();
       const left = +s.pop();
-      const result = calculateFourOperations(left, right, cur);
+      const result = calculateOperations(left, right, cur);
       s.push(result);
     } else {
       s.push(cur);
@@ -17,7 +17,7 @@ export function calculatePostfixNotation(postfixNotation) {
   return s[0];
 }
 
-function calculateFourOperations(left, right, operator) {
+function calculateOperations(left, right, operator) {
   if (operator === "+") {
     return left + right;
   }
@@ -29,5 +29,8 @@ function calculateFourOperations(left, right, operator) {
   }
   if (operator === "/") {
     return left / right;
+  }
+  if (operator === "%") {
+    return left % right;
   }
 }
