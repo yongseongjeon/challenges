@@ -19,6 +19,6 @@ describe("후위표현식으로 변환하면", () => {
   });
   it("a - b * c * d + e / f 는 a b c * d * - e f / + - 이다.", () => {
     const answer = convertToPostfixNotation(["a", "-", "b", "*", "c", "*", "d", "+", "e", "/", "f"]);
-    expect(answer).toStrictEqual(["a", "b", "c", "*", "d", "*", "-", "e", "f", "/", "+"]);
+    expect(answer).toStrictEqual(["a", "b", "c", "*", "-", "d", "*", "e", "f", "/", "+"]);
   });
 });
