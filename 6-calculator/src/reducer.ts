@@ -1,15 +1,21 @@
-import { Operand, Operator } from "./type";
+import { NotationElement, Operand, Operator } from "./type";
 import calculate from "./utils/calculate/calculate";
 
-export const initialState = {
-  formula: [] as string[],
+export const initialState: State = {
+  formula: [] as NotationElement[],
   operator: "",
   result: "",
   input: "0",
   isPressedEqualButton: false,
 };
 
-type State = typeof initialState;
+export interface State {
+  formula: NotationElement[];
+  operator: Operator;
+  result: string;
+  input: string;
+  isPressedEqualButton: boolean;
+}
 
 export enum ActionType {
   CLICK_RESET = "CLICK_RESET",

@@ -44,7 +44,7 @@ export default Calculator;
 const FormulaDisplay = styled.div`
   width: 20rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: 1rem;
 `;
 
@@ -52,7 +52,7 @@ const ResultDisplay = styled.div`
   width: 20rem;
   height: 3rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: 2rem;
 `;
 

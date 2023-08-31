@@ -1,7 +1,10 @@
 import { convertToPostfixNotation } from "../postfixNotation/postfixNotation";
 import { calculatePostfixNotation } from "../calculatorPostfixNotation/calculatorPostfixNotation";
+import { NotationElement } from "../../type";
 
-function calculate(infixNotation) {
+type InfixNotation = NotationElement[];
+
+function calculate(infixNotation: InfixNotation) {
   const postfixNotation = convertToPostfixNotation(infixNotation);
   const result = calculatePostfixNotation(postfixNotation);
   return result;
