@@ -1,11 +1,12 @@
 import { NotationElement, Operand, Operator } from "./type";
 import calculate from "./utils/calculateInfixNotation/calculateInfixNotation";
 
+const INIT_INPUT = "0";
 export const initialState: State = {
   formula: [] as NotationElement[],
   operator: "",
   result: "",
-  input: "0",
+  input: INIT_INPUT,
   isPressedEqualButton: false,
 };
 
@@ -104,7 +105,7 @@ export function reducer(state: State, action: Action) {
         newFormula = [];
         newIsPressedEqualButton = false;
       }
-      const isInitialInput = input === "0";
+      const isInitialInput = input === INIT_INPUT;
       newInput = isInitialInput ? operand : input + operand;
       if (operator) {
         newInput = operand;
