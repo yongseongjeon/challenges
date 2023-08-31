@@ -1,4 +1,4 @@
-import { convertToPostfixNotation } from "../postfixNotation/postfixNotation";
+import { convertToPostfixNotation } from "../convertToPostfixNotation/convertToPostfixNotation";
 import { calculatePostfixNotation } from "../calculatorPostfixNotation/calculatorPostfixNotation";
 import { NotationElement } from "../../type";
 

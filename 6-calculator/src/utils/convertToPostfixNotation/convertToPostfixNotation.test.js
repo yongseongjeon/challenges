@@ -1,4 +1,4 @@
-import { convertToPostfixNotation } from "./postfixNotation";
+import { convertToPostfixNotation } from "./convertToPostfixNotation";
 
 describe("후위표현식으로 변환하면", () => {
   it("a + b 는 a b + 이다.", () => {

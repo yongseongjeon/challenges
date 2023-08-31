@@ -1,5 +1,5 @@
 import { NotationElement, Operand, Operator } from "../../type";
-import { isOperator } from "../postfixNotation/postfixNotation";
+import { isOperator } from "../convertToPostfixNotation/convertToPostfixNotation";
 
 export function calculatePostfixNotation(postfixNotation: NotationElement[]) {
   const postfixNotationList = postfixNotation.reverse();
