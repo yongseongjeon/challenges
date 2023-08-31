@@ -3,19 +3,19 @@ import { isOperator } from "../postfixNotation/postfixNotation";
 
 export function calculatePostfixNotation(postfixNotation: NotationElement[]) {
   const postfixNotationList = postfixNotation.reverse();
-  const s = [postfixNotationList.pop()] as NotationElement[];
+  const stack = [postfixNotationList.pop()] as NotationElement[];
   while (postfixNotationList.length > 0) {
     const cur = postfixNotationList.pop() as Operator;
     if (isOperator(cur)) {
-      const right = s.pop() as Operand;
-      const left = s.pop() as Operand;
+      const right = stack.pop() as Operand;
+      const left = stack.pop() as Operand;
       const result = calculateOperations(left, right, cur);
-      s.push(String(result));
+      stack.push(String(result));
     } else {
-      s.push(cur);
+      stack.push(cur);
     }
   }
-  return s[0];
+  return stack[0];
 }
 
 function calculateOperations(left: Operand, right: Operand, operator: Operator): number {
