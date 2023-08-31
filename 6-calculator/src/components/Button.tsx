@@ -1,11 +1,11 @@
 import { MouseEventHandler } from "react";
 import { Operand, Operator } from "../type";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-type CalculatorButton = Operand | Operator | "C" | "←" | "+/-" | "." | "=";
+type CalculatorButtonLabel = Operand | Operator | "C" | "←" | "+/-" | "." | "=";
 
 interface ButtonProps {
-  label: CalculatorButton;
+  label: CalculatorButtonLabel;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
