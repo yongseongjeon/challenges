@@ -4,10 +4,10 @@ import { NotationElement } from "../../type";
 
 type InfixNotation = NotationElement[];
 
-function calculate(infixNotation: InfixNotation) {
+function calculateInfixNotation(infixNotation: InfixNotation) {
   const postfixNotation = convertToPostfixNotation(infixNotation);
   const result = calculatePostfixNotation(postfixNotation);
   return result;
 }
 
-export default calculate;
+export default calculateInfixNotation;

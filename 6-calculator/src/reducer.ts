@@ -1,5 +1,5 @@
 import { NotationElement, Operand, Operator } from "./type";
-import calculate from "./utils/calculate/calculate";
+import calculate from "./utils/calculateInfixNotation/calculateInfixNotation";
 
 export const initialState: State = {
   formula: [] as NotationElement[],
